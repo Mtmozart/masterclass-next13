@@ -1,5 +1,10 @@
 import Image from "next/image";
+import ProductList from "@/components/shop/product-list";
 
 export default function Home() {
-  return <h1>Olá mundo</h1>;
+  return (
+    <section className="container">
+      <ProductList />
+    </section>
+  );
 }
