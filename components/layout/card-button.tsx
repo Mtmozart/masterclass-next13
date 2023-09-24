@@ -1,5 +1,8 @@
+"use client";
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
+
+import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
 
 export default function CardButton() {
   return (

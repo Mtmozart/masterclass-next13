@@ -1,4 +1,5 @@
 "use client";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 import {
   Card,
   CardContent,
@@ -9,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { useToast } from "@/components/ui/use-toast";
 
 interface ProductCardProps {
   id: string;
@@ -31,7 +33,27 @@ export default function ProductCard({
   image,
   images,
 }: ProductCardProps) {
-  async function addToCard() {}
+  const { addItem } = useShoppingCart();
+  const { toast } = useToast();
+  const formattedPrice = formatCurrencyString({
+    value: Number(price),
+    currency,
+    language: "pt-BR",
+  });
+  async function addToCard(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    addItem({
+      name,
+      description,
+      price: Number(price),
+      id,
+      currency,
+      image,
+    });
+    toast({
+      title: "Produto adicionado",
+    });
+  }
 
   return (
     <Card>
@@ -55,7 +77,7 @@ export default function ProductCard({
       <CardFooter className="flex items-center justify-between ">
         <div>
           <p>Preço</p>
-          <p>R$ {price}</p>
+          <p>{formattedPrice}</p>
         </div>
         <Button size={"lg"} variant={"default"} onClick={addToCard}>
           {" "}

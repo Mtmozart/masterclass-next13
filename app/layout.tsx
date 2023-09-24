@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, Oxygen } from "next/font/google";
 import Header from "@/components/layout/header";
+import AppCardProvider from "@/components/shop/app-card-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const oxygen = Oxygen({
@@ -23,8 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(oxygen.className, "min-h-screen flex flex-col")}>
-        <Header />
-        <main className="flex-grow">{children}</main>
+        <AppCardProvider>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Toaster />
+        </AppCardProvider>
       </body>
     </html>
   );
