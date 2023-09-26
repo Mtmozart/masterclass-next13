@@ -18,8 +18,6 @@ export default function Cart() {
   const { cartCount, cartDetails, redirectToCheckout } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  const { clearCart } = useShoppingCart();
-
   async function checkout() {
     setIsCheckingOut(true);
     const response = await fetch("/api/checkout", {
@@ -38,14 +36,6 @@ export default function Cart() {
 
   return (
     <section className="container flex flex-col my-2 space-y-2">
-      <div className="container flex w-full h-30 items-center justify-center p-4">
-        <h2 className="pl-4">Limpar o carrinho: </h2>
-        <Trash2
-          className="text-red-500 hover:text-red-800 pr-2"
-          size={40}
-          onClick={clearCart}
-        />
-      </div>
       {cartDetails &&
         Object.keys(cartDetails).map((key) => (
           <Card key={key}>
