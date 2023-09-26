@@ -1,5 +1,5 @@
 import Logo from "./logo";
-import CardButton from "./card-button";
+import CartButton from "./cart-button";
 import UserNav from "./user-nav";
 
 export default function Header() {
@@ -8,7 +8,7 @@ export default function Header() {
       <div className="container ms-auto p-4 flex items-center justify-between">
         <Logo />
         <div className="flex items-center justify-center space-x-4">
-          <CardButton />
+          <CartButton />
           <UserNav />
         </div>
       </div>

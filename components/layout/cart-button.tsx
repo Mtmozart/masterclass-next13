@@ -4,10 +4,11 @@ import { ShoppingCart } from "lucide-react";
 
 import { useShoppingCart, formatCurrencyString } from "use-shopping-cart";
 
-export default function CardButton() {
+export default function CartButton() {
+  const { cartCount, formattedTotalPrice } = useShoppingCart();
   return (
     <Link href={"/cart"} className="flex items-center justify-center gap-2">
-      (R$ 150.00), (3)
+      ({formattedTotalPrice}), ({cartCount})
       <ShoppingCart className="font-extrabold h-6 w-6" />
     </Link>
   );
